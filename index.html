@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mubeen Memon — BI Developer & QA Automation Tester</title>
+<meta name="description" content="Portfolio of Mubeen Memon, Business Intelligence Developer and QA Automation Tester specializing in Power BI, DAX, SQL, Microsoft Fabric and test automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F1419;
+    --panel:#161B22;
+    --panel-2:#1C232C;
+    --line:#2A323D;
+    --text:#E6EDF3;
+    --muted:#8B949E;
+    --teal:#2DD4BF;
+    --amber:#F5A623;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(15,20,25,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand{font-family:var(--display); font-weight:700; font-size:1.05rem; letter-spacing:-0.02em;}
+  .brand span{color:var(--teal);}
+  .nav-links{display:flex; gap:28px; list-style:none; font-size:0.88rem; color:var(--muted);}
+  .nav-links a{text-decoration:none; transition:color .2s;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-cta{
+    border:1px solid var(--teal); color:var(--teal); padding:8px 16px; border-radius:6px;
+    font-size:0.85rem; text-decoration:none; font-weight:500; transition:background .2s,color .2s;
+  }
+  .nav-cta:hover{background:var(--teal); color:#0F1419;}
+  .nav-toggle{display:none;}
+
+  /* HERO */
+  header.hero{padding:88px 0 64px; border-bottom:1px solid var(--line); position:relative; overflow:hidden;}
+  .eyebrow{
+    font-family:var(--mono); font-size:0.78rem; color:var(--amber);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:''; width:8px; height:8px; border-radius:50%; background:var(--amber); display:inline-block; box-shadow:0 0 0 4px rgba(245,166,35,0.15);}
+  h1.hero-title{
+    font-family:var(--display); font-weight:700; font-size:clamp(2.1rem,5vw,3.4rem);
+    line-height:1.08; letter-spacing:-0.02em; max-width:780px; margin-bottom:20px;
+  }
+  h1.hero-title em{font-style:normal; color:var(--teal);}
+  .hero-sub{font-size:1.05rem; color:var(--muted); max-width:620px; margin-bottom:32px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:56px;}
+  .btn-primary{
+    background:var(--teal); color:#0B0F13; padding:12px 22px; border-radius:6px;
+    text-decoration:none; font-weight:600; font-size:0.92rem; transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 6px 20px rgba(45,212,191,0.25);}
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--text); padding:12px 22px; border-radius:6px;
+    text-decoration:none; font-weight:500; font-size:0.92rem; transition:border-color .15s, color .15s;
+  }
+  .btn-ghost:hover{border-color:var(--muted); color:var(--text);}
+
+  /* KPI DASHBOARD STRIP — signature element */
+  .kpi-strip{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  .kpi-card{background:var(--panel); padding:24px 22px;}
+  .kpi-label{font-family:var(--mono); font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;}
+  .kpi-value{font-family:var(--display); font-weight:700; font-size:1.9rem; color:var(--text); margin-bottom:10px;}
+  .kpi-value .unit{font-size:1rem; color:var(--teal); margin-left:2px;}
+  .kpi-bar{height:5px; background:#11161C; border-radius:3px; overflow:hidden;}
+  .kpi-bar i{display:block; height:100%; background:linear-gradient(90deg, var(--teal), var(--amber)); border-radius:3px; width:0%; transition:width 1.4s cubic-bezier(.2,.8,.2,1);}
+
+  /* SECTIONS */
+  section{padding:72px 0; border-bottom:1px solid var(--line);}
+  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:36px;}
+  .section-num{font-family:var(--mono); color:var(--amber); font-size:0.85rem;}
+  h2.section-title{font-family:var(--display); font-weight:600; font-size:1.6rem; letter-spacing:-0.01em;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:48px;}
+  .about-grid p{color:var(--muted); margin-bottom:16px; font-size:0.98rem;}
+  .about-grid strong{color:var(--text); font-weight:600;}
+  .meta-list{list-style:none; display:flex; flex-direction:column; gap:14px;}
+  .meta-list li{display:flex; justify-content:space-between; font-size:0.88rem; border-bottom:1px dashed var(--line); padding-bottom:10px;}
+  .meta-list .k{color:var(--muted); font-family:var(--mono); font-size:0.78rem; text-transform:uppercase;}
+  .meta-list .v{text-align:right;}
+
+  /* SKILLS */
+  .skills-cols{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .skill-group h3{font-family:var(--mono); font-size:0.82rem; color:var(--teal); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;}
+  .pill-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .pill{
+    border:1px solid var(--line); background:var(--panel); padding:7px 13px; border-radius:20px;
+    font-size:0.82rem; color:var(--text);
+  }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{position:relative; padding-left:28px;}
+  .timeline::before{content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .tl-item{position:relative; margin-bottom:38px;}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-item::before{content:''; position:absolute; left:-28px; top:5px; width:11px; height:11px; border-radius:50%; background:var(--bg); border:2px solid var(--teal);}
+  .tl-date{font-family:var(--mono); font-size:0.76rem; color:var(--amber); margin-bottom:6px;}
+  .tl-role{font-family:var(--display); font-weight:600; font-size:1.08rem; margin-bottom:2px;}
+  .tl-org{color:var(--muted); font-size:0.86rem; margin-bottom:10px;}
+  .tl-desc{color:var(--muted); font-size:0.92rem; max-width:640px;}
+  .tl-desc li{margin-left:18px; margin-bottom:4px;}
+
+  /* PROJECTS */
+  .projects-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .project-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:26px;
+    display:flex; flex-direction:column; transition:border-color .2s, transform .2s;
+  }
+  .project-card:hover{border-color:var(--teal); transform:translateY(-3px);}
+  .project-figure{font-family:var(--display); font-weight:700; font-size:1.7rem; color:var(--teal); margin-bottom:14px;}
+  .project-card h3{font-size:1.02rem; margin-bottom:10px; font-family:var(--display); font-weight:600;}
+  .project-card p{color:var(--muted); font-size:0.88rem; flex-grow:1;}
+  .project-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+  .project-tags span{font-family:var(--mono); font-size:0.7rem; color:var(--muted); border:1px solid var(--line); padding:3px 8px; border-radius:4px;}
+
+  /* CERTIFICATIONS */
+  .cert-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+  .cert-item{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px 18px;
+    font-size:0.88rem;
+  }
+  .cert-item .name{font-weight:500;}
+  .cert-item .year{font-family:var(--mono); color:var(--muted); font-size:0.76rem; white-space:nowrap;}
+
+  /* CONTACT */
+  footer{padding:72px 0 48px;}
+  .contact-inner{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px;}
+  .contact-inner h2{font-family:var(--display); font-weight:700; font-size:2rem; max-width:480px; line-height:1.15; margin-bottom:14px;}
+  .contact-inner p{color:var(--muted); max-width:420px; margin-bottom:24px;}
+  .contact-links{display:flex; gap:14px; flex-wrap:wrap;}
+  .foot-note{margin-top:56px; padding-top:24px; border-top:1px solid var(--line); display:flex; justify-content:space-between; color:var(--muted); font-size:0.8rem; font-family:var(--mono); flex-wrap:wrap; gap:10px;}
+
+  @media (max-width:760px){
+    .about-grid, .skills-cols{grid-template-columns:1fr;}
+    .projects-grid, .cert-grid{grid-template-columns:1fr;}
+    .kpi-strip{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .contact-inner{flex-direction:column; align-items:flex-start;}
+  }
+
+  :focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">MUBEEN<span>.</span>MEMON</div>
+    <ul class="nav-links">
+      <li><a href="#work">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certs">Certifications</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Open to BI Developer · Data Analyst · QA Automation roles</div>
+    <h1 class="hero-title">Turning raw data into dashboards people actually trust, then <em>testing</em> the systems that produce it.</h1>
+    <p class="hero-sub">BI Developer &amp; QA Automation Tester with 1+ year at Yoda Tech Pte Ltd (Singapore, remote) and 10 months of freelance analytics work for US clients. 2x Microsoft Certified — PL-300 &amp; DP-700.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#projects">View Projects</a>
+      <a class="btn-ghost" href="#contact">Get in touch</a>
+    </div>
+
+    <div class="kpi-strip" id="kpiStrip">
+      <div class="kpi-card">
+        <div class="kpi-label">AdventureWorks BI Report</div>
+        <div class="kpi-value" data-target="24.9">$0.0<span class="unit">M tracked</span></div>
+        <div class="kpi-bar"><i data-width="100"></i></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Maven Cycles Dashboard</div>
+        <div class="kpi-value" data-target="8.14">$0.00<span class="unit">M revenue</span></div>
+        <div class="kpi-bar"><i data-width="68"></i></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Blinkit Retail Dashboard</div>
+        <div class="kpi-value" data-target="1.2">$0.0<span class="unit">M analyzed</span></div>
+        <div class="kpi-bar"><i data-width="40"></i></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">01</span><h2 class="section-title">About</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>I work across two complementary disciplines: <strong>BI &amp; Analytics</strong> — building Power BI dashboards, DAX measures, Power Query transformations, and SQL data models that stakeholders rely on for real decisions — and <strong>QA Automation</strong> — writing automated test suites, running API and regression testing, and tracking issues through JIRA to keep the systems behind that data reliable.</p>
+        <p>Currently at Yoda Tech Pte Ltd (Singapore, remote), I split my time between maintaining 5+ production Power BI dashboards and developing AI-assisted automated test suites for web applications. Before that, I spent 10 months freelancing for US-based clients sourced through LinkedIn, building dashboards across retail, manufacturing, and e-commerce data.</p>
+      </div>
+      <ul class="meta-list">
+        <li><span class="k">Location</span><span class="v">Shrirampur, Maharashtra, India</span></li>
+        <li><span class="k">Education</span><span class="v">BCA (Pursuing), CD Jain College of Commerce — 2023–2026</span></li>
+        <li><span class="k">Languages</span><span class="v">English, Hindi, Marathi</span></li>
+        <li><span class="k">Email</span><span class="v">mubeenyyt@gmail.com</span></li>
+        <li><span class="k">Phone</span><span class="v">+91 7447461777</span></li>
+        <li><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/mubeen-memon-b35510306" target="_blank" rel="noopener">mubeen-memon</a></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Experience</h2></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">FEB 2026 — PRESENT</div>
+        <div class="tl-role">QA Automation Tester</div>
+        <div class="tl-org">Yoda Tech Pte Ltd · Singapore · Remote</div>
+        <ul class="tl-desc">
+          <li>Develop automated test suites for web applications using AI-assisted coding tools (Claude Code).</li>
+          <li>Perform API testing, regression testing, and manual QA; log and track issues through JIRA.</li>
+          <li>Apply Selenium and test automation practices to improve coverage and reduce manual QA effort.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">AUG 2025 — PRESENT</div>
+        <div class="tl-role">Power BI Developer</div>
+        <div class="tl-org">Yoda Tech Pte Ltd · Singapore · Remote</div>
+        <ul class="tl-desc">
+          <li>Develop and maintain 5+ interactive Power BI dashboards supporting business and stakeholder reporting.</li>
+          <li>Build SQL queries and Power Query/DAX transformations to clean, model, and validate data for accuracy.</li>
+          <li>Prepare MIS reports and performance dashboards used directly in management decision-making.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">OCT 2024 — JUL 2025</div>
+        <div class="tl-role">Data Analyst — Freelance</div>
+        <div class="tl-org">Self-Employed · United States · Remote</div>
+        <ul class="tl-desc">
+          <li>Built and visualized dashboards in Power BI for US-based freelance clients, sourced via LinkedIn.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">03</span><h2 class="section-title">Key Projects</h2></div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-figure">$24.9M</div>
+        <h3>AdventureWorks BI Report</h3>
+        <p>Tracked revenue across 9 interactive report tabs, with customer segmentation and what-if price scenario modeling.</p>
+        <div class="project-tags"><span>Power BI</span><span>DAX</span><span>Segmentation</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-figure">$8.14M</div>
+        <h3>Maven Cycles Executive Dashboard</h3>
+        <p>Built a revenue-vs-goal dashboard with geographic breakdown, profit tracking, and monthly trend analysis.</p>
+        <div class="project-tags"><span>Power BI</span><span>Power Query</span><span>KPI Tracking</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-figure">$1.2M</div>
+        <h3>Blinkit Retail Dashboard</h3>
+        <p>Analyzed retail sales with dynamic outlet filtering across location, size, and item type.</p>
+        <div class="project-tags"><span>Power BI</span><span>SQL</span><span>Retail Analytics</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">04</span><h2 class="section-title">Skills</h2></div>
+    <div class="skills-cols">
+      <div class="skill-group">
+        <h3>BI &amp; Analytics</h3>
+        <div class="pill-row">
+          <span class="pill">Power BI Desktop &amp; Service</span>
+          <span class="pill">DAX</span>
+          <span class="pill">Power Query</span>
+          <span class="pill">SQL / MySQL</span>
+          <span class="pill">Microsoft Fabric</span>
+          <span class="pill">Data Modeling &amp; ETL</span>
+          <span class="pill">KPI Dashboards</span>
+          <span class="pill">Advanced Excel</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>QA Automation</h3>
+        <div class="pill-row">
+          <span class="pill">Python</span>
+          <span class="pill">Selenium</span>
+          <span class="pill">API Testing</span>
+          <span class="pill">Regression Testing</span>
+          <span class="pill">Manual QA</span>
+          <span class="pill">JIRA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Certifications</h2></div>
+    <div class="cert-grid">
+      <div class="cert-item"><span class="name">Power BI Data Analyst Associate (PL-300) — Microsoft</span><span class="year">2025</span></div>
+      <div class="cert-item"><span class="name">Fabric Data Engineer Associate (DP-700) — Microsoft</span><span class="year">2026</span></div>
+      <div class="cert-item"><span class="name">Data Analyst – Big 4 Ready — OneRoadmap</span><span class="year">2026</span></div>
+      <div class="cert-item"><span class="name">Deloitte Australia – Data Analytics Job Simulation</span><span class="year">2026</span></div>
+      <div class="cert-item"><span class="name">SAP ERP Essential Training — LinkedIn Learning</span><span class="year">2026</span></div>
+      <div class="cert-item"><span class="name">TCS Presentation Skills — Tata Consultancy Services</span><span class="year">2026</span></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div>
+        <h2>Let's talk about your data, or your next release.</h2>
+        <p>Open to BI Developer, Data Analyst, or QA Automation roles — remote or hybrid.</p>
+        <div class="contact-links">
+          <a class="btn-primary" href="mailto:mubeenyyt@gmail.com">mubeenyyt@gmail.com</a>
+          <a class="btn-ghost" href="https://www.linkedin.com/in/mubeen-memon-b35510306" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>Shrirampur, Maharashtra, India</span>
+      <span>+91 7447461777</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Animate KPI numbers and bars on first view
+  const kpiStrip = document.getElementById('kpiStrip');
+  let animated = false;
+  function animateKPIs(){
+    if(animated) return;
+    animated = true;
+    document.querySelectorAll('.kpi-value').forEach(el=>{
+      const target = parseFloat(el.getAttribute('data-target'));
+      const unitEl = el.querySelector('.unit');
+      const unitHTML = unitEl ? unitEl.outerHTML : '';
+      const decimals = target % 1 === 0 ? 1 : 2;
+      let start = 0;
+      const duration = 1200;
+      const startTime = performance.now();
+      function frame(now){
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const val = (target * eased).toFixed(decimals);
+        el.innerHTML = '$' + val + unitHTML;
+        if(progress < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+    document.querySelectorAll('.kpi-bar i').forEach(bar=>{
+      const w = bar.getAttribute('data-width');
+      requestAnimationFrame(()=>{ bar.style.width = w + '%'; });
+    });
+  }
+  if('IntersectionObserver' in window){
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting) animateKPIs(); });
+    }, {threshold:0.3});
+    obs.observe(kpiStrip);
+  } else {
+    animateKPIs();
+  }
+</script>
+
+</body>
+</html>
